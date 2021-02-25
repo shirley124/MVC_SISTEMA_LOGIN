@@ -62,6 +62,13 @@ namespace MVC_SISTEMA_LOGIN
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
+
+            services.AddAuthentication().AddFacebook(facebookOption => 
+            {
+                facebookOption.AppId = Configuration["Authentication:Facebook:AppId"];
+
+                facebookOption.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            });
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
